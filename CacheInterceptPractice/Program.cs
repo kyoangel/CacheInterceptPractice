@@ -1,15 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autofac.Extras.DynamicProxy;
+using System;
+using Autofac;
+using Autofac.Core;
 
 namespace CacheInterceptPractice
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<CacheResultInterceptor>().SingleInstance();
+            builder.RegisterType<LongWork>().EnableClassInterceptors();
+            var container = builder.Build();
+
+            var longWork = container.Resolve<LongWork>();
+            var result = longWork.DoWork();
+            Console.WriteLine(result);
+
+            result = longWork.DoWork();
+            Console.WriteLine(result);
+
+            result = longWork.DoWork();
+            Console.WriteLine(result);
+
+            Console.ReadLine();
         }
     }
 }
