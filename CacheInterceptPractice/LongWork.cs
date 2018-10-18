@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Autofac.Extras.DynamicProxy;
+using System;
 using System.Threading;
-using Autofac.Extras.DynamicProxy;
 
 namespace CacheInterceptPractice
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Castle.DynamicProxy;
+using System;
 using System.Linq;
-using Castle.DynamicProxy;
 
 namespace CacheInterceptPractice
 {
@@ -33,7 +33,6 @@ namespace CacheInterceptPractice
 			{
 				_memoryCacheProvider.Put(key, result, attribute.Duration);
 			}
-
 		}
 	}
 }
